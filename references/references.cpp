@@ -3,7 +3,7 @@
 #include<iomanip>
 #include<string>
 
-using namespace std;
+//using namespace std;
 
 int k=10;
 int nmi;
@@ -15,15 +15,20 @@ int fun(const int &x)
      return x;
 }
 
+unsigned short hash(void *p) {
+    unsigned long val = reinterpret_cast<unsigned long>(p);
+    return ( unsigned short )(val^(val >> 16));
+}
+
 int main()
 {
-    int number1 = 88, number2 = 22;
-    int x = fun(number1);
-    (void) x;
     (void) nmi;
     (void) plis;
     (void) blush;
-    
+    int number1 = 88, number2 = 22;
+    int x = fun(number1);
+    (void) x;
+
     // Create a pointer pointing to number1
     int * pNumber1 = &number1;  // Explicit referencing
     *pNumber1 = 99;             // Explicit dereferencing
@@ -65,7 +70,7 @@ int main()
     (void) p;
     (void) r;
 
-/*
+    /*
     std::cout << 1331 << std::endl;
     std::cout << "In hex " << std::hex << 1331 << std::endl;
     std::cout << 1331.123456 << std::endl;
@@ -91,6 +96,12 @@ int main()
     int j1{};
     int j2{};
     cout << j1 << " " <<j2<<endl;
+
+    // Returns a hash code based on an address
+    std::cout <<"Printing Hash"<<std::endl;
+    int a[20];
+    for (int i = 0; i < 20; i++)
+        std::cout << a+i<< " " <<hash(a + i) << std::endl;
     */
     return 0;
 }
