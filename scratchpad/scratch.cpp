@@ -4,7 +4,7 @@
 #include<string>
 #include "random.h"
 
-using namespace std;
+//using namespace std;
 
 int k=10;
 int nmi;
@@ -18,9 +18,10 @@ int fun(const int &x)
 
 int main()
 {
-    (void) nmi;
     (void) plis;
     (void) blush;
+    (void) nmi;
+    /*
     int number1 = 88, number2 = 22;
     int x = fun(number1);
     (void) x;
@@ -65,8 +66,8 @@ int main()
     (void) i;
     (void) p;
     (void) r;
+    */
 
-    /*
     std::cout << 1331 << std::endl;
     std::cout << "In hex " << std::hex << 1331 << std::endl;
     std::cout << 1331.123456 << std::endl;
@@ -81,23 +82,10 @@ int main()
     std::cout.width(8);
     std::cout << 1331 << std::endl;
 
-
-    std::string name,greeting;
-    std::cout << "Please enter your first name: ";
-    while(std::cin >> name) {
-        greeting = "Hello, " + name + "!";
-        std::cout << greeting << std::endl << std::endl;
-        std::cout << "Please enter your first name: ";
-    }
-    int j1{};
-    int j2{};
-    cout << j1 << " " <<j2<<endl;
-
     // Returns a hash code based on an address
     std::cout <<"Printing Hash"<<std::endl;
     int a[20];
     for (int i = 0; i < 20; i++)
-        std::cout << a+i<< " " <<hash(a + i) << std::endl;
-    */
+        std::cout << a+i<< " " <<randar1::hash(a + i) << std::endl;
     return 0;
 }
