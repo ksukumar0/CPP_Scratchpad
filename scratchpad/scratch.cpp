@@ -50,14 +50,15 @@ int main()
     int (*ptr)[4]={nullptr};
     ptr = ia;
     std::cout <<"The array ia is: "<<ptr<<std::endl;
+    std::cout <<"The array ia+1 is: "<<ia+1<<" ia+2 is:"<<ia+2<<std::endl;
 
 
     for (int (*p)[4] = ia; p != ia + 3; ++p)
     {
-        std::cout << p << "\t";
+        //std::cout << p << "\t";
         for (int *q = *p; q != *p + 4; ++q)
         {
-            std::cout << q << ' '<<*q << ' ';
+            std::cout << q <<"="<<*q << ' ';
         }
         std::cout << std::endl;
     }
