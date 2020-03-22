@@ -8,6 +8,7 @@ OBJS=$(subst .cpp,.o,$(SRC))
 
 SCRATCH_OBJS = scratch.o random.o
 TEST_OBJS = test.o
+SORT_OBJS = sort.o
 
 scratch: $(SCRATCH_OBJS)
 	$(CC) $(FLAGS) $(OFLAGS) $(STDFLAGS) -o scratch $(SCRATCH_OBJS)
@@ -15,6 +16,9 @@ scratch: $(SCRATCH_OBJS)
 test: $(TEST_OBJS)
 	$(CC) $(FLAGS) $(OFLAGS) $(STDFLAGS) -o test $(TEST_OBJS)
 	
+sort: $(SORT_OBJS)
+	$(CC) $(FLAGS) $(OFLAGS) $(STDFLAGS) -o sort $(SORT_OBJS)
+
 %.o: %.cpp
 	$(CC) -c $(FLAGS) $(STDFLAGS) $< -o $@
 
