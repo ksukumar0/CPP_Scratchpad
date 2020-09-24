@@ -35,16 +35,15 @@ int foreach( std::vector<std::string> &words )
 
 void vectorTest()
 {
-    std::vector<int> v(30);
-    std::vector<int> v1(30);
+    std::vector<std::string> v(30);
+    std::vector<std::string> v1(30);
 
-    std::list<std::string> v2(20,"Howdy");
-    (void) v2;
-    //v1.assign(v2.begin(), v2.end());
+    std::vector<std::string> v2(30,"Howdy");
+    v1.assign(v2.begin(), v2.end());
     // The above commented statement will error out!
 
     std::cout<<v.size() << " " <<v.capacity() << "\n";
-    v.push_back(19);
+    v.push_back("You");
     std::cout<<v.size() << " " <<v.capacity() << "\n";
     return;
 }
