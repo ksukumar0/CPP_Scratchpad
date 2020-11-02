@@ -25,7 +25,7 @@ class MyClass
     MyClass& operator = (const MyClass& x)
     {
         std::cout << "run assignment MyClass::operator=(const MyClass&)" << std::endl;
-        name = x.name + "copy";
+        name = x.name + "_Copy";
         return *this;
     }
     private:
