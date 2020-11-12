@@ -20,11 +20,11 @@ class MyClass
 
     MyClass(const MyClass& x)
     {
-        std::cout << "run copy constructor MyClass::MyClass(const MyClass&)" << std::endl;
+        std::cout << "run copy constructor MyClass::MyClass(const MyClass&) " << name << std::endl;
     }
     MyClass& operator = (const MyClass& x)
     {
-        std::cout << "run assignment MyClass::operator=(const MyClass&)" << std::endl;
+        std::cout << "run assignment MyClass::operator=(const MyClass&) " << name << std::endl;
         name = x.name + "_Copy";
         return *this;
     }
