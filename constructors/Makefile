@@ -8,8 +8,8 @@ STDFLAGS = -std=c++11
 
 SRC = $(wildcard *.cpp)
 OBJS=$(subst .cpp,.o,$(SRC))
-
 DESTOBJS=destructorOrder.cpp
+DESTINHERTOBJS=destOrderInhtce.cpp
 
 %.o: %.cpp
 	$(CC) -c $(FLAGS) $(STDFLAGS) $< -o $@
@@ -19,6 +19,9 @@ construct: $(OBJS)
 
 destruct: $(DESTOBJS)
 	$(CC) $(FLAGS) $(OFLAGS) $(STDFLAGS) -o destruct $(DESTOBJS)
+
+destructInher: $(DESTINHERTOBJS)
+	$(CC) $(FLAGS) $(OFLAGS) $(STDFLAGS) -o destinhert $(DESTINHERTOBJS)
 
 clean:
 	rm -rf *.o
