@@ -9,11 +9,11 @@ class A
     std::string name;
 };
 
-class B
+class B : public A
 {
     public:
     A a, aa, aaa;
-    B() : a("a"),aa("aa"){ std::cout << "B constructor" << std::endl; }
+    B() : A("A "),a("a"),aa("aa"){ std::cout << "B constructor" << std::endl; }
     ~B() { std::cout << "B destructor" << std::endl; }
 };
 B beta;
