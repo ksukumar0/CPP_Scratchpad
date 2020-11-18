@@ -28,13 +28,9 @@ static void printVector(std::vector<a> &vect, const char *textToPrintBefore)
     }
     std::cout<<'\n';
 }
-int compare(const a &first, const a &second)
+
+bool compare(const a &first, const a &second)
 {
-//    if (first.b < second.b)
-//        return -1;
-//    else if (first.b > second.b)
-//        return 1;
-//    return 0;
     return (first.b < second.b);
 }
 
