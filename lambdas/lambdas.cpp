@@ -1,6 +1,8 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
-int main()
+void basicLambda(void)
 {
     int x = 4;
     auto y = [&r = x, x = x+1]()->int {
@@ -25,5 +27,38 @@ int main()
     std::cout<<"x value is "<<x<<std::endl;
     std::cout<<"y value is "<<y<<std::endl;
 
+}
+
+static void printVector(std::vector<int> &v)
+{
+    for(auto e : v)
+    {
+        std::cout<<e<<" ";
+    }
+    std::cout<<std::endl;
+}
+
+void lambdaCalled(void)
+{
+    std::vector<int> v;
+    int i;
+    for (i=0;i<10;i++)
+    {
+        v.push_back(i);
+    }
+    printVector(v);
+    std::transform(v.begin(), v.end(), v.begin(), [](int elem){
+                elem = elem + 5;
+                return elem;
+            }
+            );
+    printVector(v);
+}
+
+int main()
+{
+    basicLambda();
+    std::cout<<"============================="<<std::endl;
+    lambdaCalled();
     return 0;
 }
