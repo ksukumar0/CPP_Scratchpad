@@ -21,8 +21,7 @@ class func
 int main()
 {
     func mul8(8), mul64(64);
-    int n = 6;
-    cout<<n<<"*8 is "<<mul8(6)<<endl;
-    cout<<n<<"*64 is "<<mul64(6)<<endl;
+    cout<<"6*8 is "<<mul8(6)<<endl;
+    cout<<"6*64 is "<<mul64(6)<<endl;
     return 0;
 }
