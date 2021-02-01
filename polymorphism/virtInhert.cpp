@@ -21,6 +21,9 @@ class derived:public base
 
         void show ()
         { cout<< "show derived class" <<endl; }
+
+        void show1()
+        { cout<< "show1 derived class" <<endl; }
 };
 
 class derived2:public derived
@@ -35,10 +38,10 @@ class derived2:public derived
 
 static void printClass(base *bptr)
 {
-        //virtual function, binded at runtime (Runtime polymorphism)
+    //virtual function, bound at runtime (Runtime polymorphism)
     bptr->print();
 
-    // Non-virtual function, binded at compile time
+    // Non-virtual function, bound at compile time
     bptr->show();
 
 }
@@ -49,6 +52,8 @@ int main()
     derived d;
     derived2 d2;
     bptr = &d;
+    derived *pt = dynamic_cast<derived *>(bptr);
+    pt->show1();
     printClass(bptr);
     bptr = &d2;
     printClass(bptr);
