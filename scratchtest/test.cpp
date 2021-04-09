@@ -29,11 +29,12 @@ int main(void)
    char cwd[BUF_SIZE];
    getcwd(cwd, BUF_SIZE);
 
-   printf("%s\n",cwd);
-   //char file1 = "test1";
-   //char file2 = "test2";
+   printf("CWD is %s\n",cwd);
+   char file1[] = "test1";
+   char file2[] = "test2";
 
-   //const char *src = strncat(cwd, file1);
-   //const char *dest = strncat();
+   strncat(cwd, "/", 2);
+   strncat(cwd, file1, BUF_SIZE);
+   printf("File1 is %s\n",cwd);
    //bool ret = copyFile(src, dest, TRUE);
 }
