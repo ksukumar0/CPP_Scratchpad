@@ -61,5 +61,8 @@ int main()
     foreach(words);
     vectorTest();
 
+    char t[5];
+    t[5]=']';
+    (void) t;
     return 0;
 }
