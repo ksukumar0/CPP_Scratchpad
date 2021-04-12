@@ -39,9 +39,11 @@ static void readFromUnix(char *dest)
     int fd = open(dest,O_RDONLY);
     std::string s = const_cast<char *>("/proc/self/fd/") + std::to_string(fd);
     char fileName[BUF_SIZE];
-    readlink( s.c_str(), fileName, BUF_SIZE);
-    //QFileInfo fInfo = QFileInfo(static_cast<QString>(fileName));
-    std::cout<<"Size of "<<fileName<<": "<</*fInfo.size()*/ ""<< std::endl;
+    ssize_t ret = readlink(s.c_str(), fileName, sizeof(fileName)-1);
+    (ret > 0) ? fileName[ret] = '\0' : 0;
+    QFileInfo fInfo = QFileInfo(static_cast<QString>(fileName));
+    std::cout<<"Size of "<<fileName<<": "<<fInfo.size()<< std::endl;
+    std::cout<<"Returned "<<ret<<std::endl;
 }
 
 int main(void)
