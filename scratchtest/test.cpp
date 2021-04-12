@@ -30,7 +30,7 @@ static void formPath(const char * fileName, char * cwd, char * pathToFile)
     strncat(pathToFile, "/", 2);
     strncat(pathToFile, fileName, BUF_SIZE);
 
-    printf("File1 is %s\n",pathToFile);
+    printf("%s is %s\n",fileName, pathToFile);
 }
 
 int main(void)

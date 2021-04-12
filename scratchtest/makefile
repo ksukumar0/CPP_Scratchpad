@@ -20,9 +20,13 @@ SRC = $(wildcard *.c)
 OBJS=$(subst .cpp,.o,$(SRC))
 
 TEST_OBJS = test.o
+FILELENGTH_OBJS = fileLength.o
 
 test: $(TEST_OBJS)
 	$(CXX) -o test $(LFLAGS) $(LIBS) $(TEST_OBJS)
+
+fileLen: $(FILELENGTH_OBJS)
+	$(CXX) -o fileLen $(LFLAGS) $(LIBS) $(FILELENGTH_OBJS)
 
 %.o: %.cpp
 	$(CXX) -c $< $(CFLAGS) $(STDFLAGS) $(OFLAGS) $(DFLAGS) $(WFLAGS) $(INCPATH) -o $@
