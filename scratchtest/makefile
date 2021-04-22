@@ -5,11 +5,18 @@ STDFLAGS = -std=c++14
 
 DFLAGS = -DQT_NO_VERSION_TAGGING
 
-QTDIR = /usr/include/qt
-INCPATH = -I. -I$(QTDIR)/QtGui -I$(QTDIR)/QtCore -I$(QTDIR)
+QT_LIB_INSTALL_PATH = /opt/ArtifactCache/Qt/ubu18-04_x64/5.15.2/lib/
+QTDIRINC = /opt/ArtifactCache/Qt/ubu18-04_x64/5.15.2/include
+INCPATH = -I. -I$(QTDIRINC) -I$(QTDIRINC)/QtCore
 
-LDFLAGS =  -lQt5Core -lpthread
-LDFLAGS += -fsanitize=address
+#LD_LIBRARY_PATH+=/opt/ArtifactCache/Qt/ubu18-04_x64/5.15.2/lib
+
+#LDFLAGS = -Wl,-rpath,$(QT_LIB_INSTALL_PATH)
+#LDFLAGS += ${QT_LIB_INSTALL_PATH}/libQt5Core.so -lpthread
+
+LDFLAGS += -fsanitize=address -v
+LIBS += -L${QT_LIB_INSTALL_PATH}
+LIBS += -lQt5Core
 
 ifndef WFLAGS
 #WFLAGS= -Werror -Wall
@@ -22,10 +29,10 @@ TEST_OBJS = test.o
 FILELENGTH_OBJS = fileLength.o
 
 test: $(TEST_OBJS)
-	$(CXX) -o test $(LDFLAGS) $(LIBS) $(TEST_OBJS)
+	$(CXX) -o test $(LDFLAGS) $(TEST_OBJS) $(LIBS)
 
 fileLen: $(FILELENGTH_OBJS)
-	$(CXX) -o fileLen $(LDFLAGS) $(LIBS) $(FILELENGTH_OBJS)
+	$(CXX) -o fileLen $(LDFLAGS) $(FILELENGTH_OBJS) $(LIBS)
 
 %.o: %.cpp
 	$(CXX) -c -g $< $(CFLAGS) $(STDFLAGS) $(OFLAGS) $(DFLAGS) $(WFLAGS) $(INCPATH) -o $@
