@@ -1,3 +1,5 @@
 test
 fileLen
 *.o
+.gdb_history
+*peda*

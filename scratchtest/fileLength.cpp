@@ -1,3 +1,4 @@
+#include <sys/stat.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <iostream>
@@ -46,6 +47,14 @@ static void readFromUnix(char *dest)
     std::cout<<"Returned "<<ret<<std::endl;
 }
 
+static void getFileStat(const char *dest, struct stat &buf)
+{
+    struct stat tempBuf;
+    int result = stat(dest, &tempBuf);
+    buf = tempBuf;
+    (void) result;
+}
+
 int main(void)
 {
     char dest[BUF_SIZE];
@@ -56,4 +65,11 @@ int main(void)
     formPath(file2, cwd, dest);
     readFromQFile(dest);
     readFromUnix(dest);
+
+    struct stat tB;
+    struct stat &tempBuf = tB;
+    stat( (const char *) dest, &tempBuf );
+    getFileStat(dest, tempBuf);
+    struct timespec mTime = tempBuf.st_mtim;
+    (void) mTime;
 }
