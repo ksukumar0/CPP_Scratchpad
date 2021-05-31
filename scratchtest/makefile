@@ -5,8 +5,9 @@ STDFLAGS = -std=c++14
 
 DFLAGS = -DQT_NO_VERSION_TAGGING
 
-QT_LIB_INSTALL_PATH = /opt/ArtifactCache/Qt/ubu18-04_x64/5.15.2/lib/
-QTDIRINC = /opt/ArtifactCache/Qt/ubu18-04_x64/5.15.2/include
+#QT_LIB_INSTALL_PATH = /opt/ArtifactCache/Qt/ubu18-04_x64/5.15.2/lib/
+QT_LIB_INSTALL_PATH = /usr/include/qt
+QTDIRINC = /usr/include/qt
 INCPATH = -I. -I$(QTDIRINC) -I$(QTDIRINC)/QtCore
 
 #LD_LIBRARY_PATH+=/opt/ArtifactCache/Qt/ubu18-04_x64/5.15.2/lib
@@ -14,9 +15,8 @@ INCPATH = -I. -I$(QTDIRINC) -I$(QTDIRINC)/QtCore
 #LDFLAGS = -Wl,-rpath,$(QT_LIB_INSTALL_PATH)
 #LDFLAGS += ${QT_LIB_INSTALL_PATH}/libQt5Core.so -lpthread
 
-LDFLAGS += -fsanitize=address -v
+LDFLAGS += -fsanitize=address -lQt5Core
 LIBS += -L${QT_LIB_INSTALL_PATH}
-LIBS += -lQt5Core
 
 ifndef WFLAGS
 #WFLAGS= -Werror -Wall
