@@ -1,4 +1,4 @@
-CXX=g++
+CXX=clang
 CFLAGS = -fstack-protector-strong -fPIC -fsanitize=address
 OFLAGS = -O2
 STDFLAGS = -std=c++14
@@ -16,6 +16,8 @@ INCPATH = -I. -I$(QTDIRINC) -I$(QTDIRINC)/QtCore
 #LDFLAGS += ${QT_LIB_INSTALL_PATH}/libQt5Core.so -lpthread
 
 LDFLAGS += -fsanitize=address -lQt5Core
+
+
 LIBS += -L${QT_LIB_INSTALL_PATH}
 
 ifndef WFLAGS
@@ -29,10 +31,18 @@ TEST_OBJS = test.o
 FILELENGTH_OBJS = fileLength.o
 
 test: $(TEST_OBJS)
-	$(CXX) -o test $(LDFLAGS) $(TEST_OBJS) $(LIBS)
+ifeq ($(CXX),g++)
+	$(CXX) -o test $(LDFLAGS) $(TEST_OBJS)
+else
+	$(CXX) -o test $(LDFLAGS) -lstdc++ $(TEST_OBJS)
+endif
 
 fileLen: $(FILELENGTH_OBJS)
-	$(CXX) -o fileLen $(LDFLAGS) $(FILELENGTH_OBJS) $(LIBS)
+ifeq ($(CXX),g++)
+	$(CXX) -o fileLen $(LDFLAGS) $(FILELENGTH_OBJS)
+else
+	$(CXX) -o fileLen $(LDFLAGS) -lstdc++ $(FILELENGTH_OBJS)
+endif
 
 %.o: %.cpp
 	$(CXX) -c -g $< $(CFLAGS) $(STDFLAGS) $(OFLAGS) $(DFLAGS) $(WFLAGS) $(INCPATH) -o $@
