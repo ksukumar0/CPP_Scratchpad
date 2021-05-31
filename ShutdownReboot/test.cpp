@@ -3,27 +3,11 @@
 #include <string>
 #include <cassert>
 #include <cstdbool>
-#include <QFile>
+#include <QProcess>
 #include <iostream>
+#include <sys/reboot.h>
 
 #define BUF_SIZE 1000
-
-bool copyFile(const char *src, const char *dest, bool failIfExists)
-{
-    if (QFile::exists(dest))
-    {
-        if (failIfExists)
-        {
-            return false;
-        }
-        else
-        {
-            QFile::remove(dest);
-        }
-    }
-    QFile::copy(src, dest);
-    return true;
-}
 
 static void formPath(const char * fileName, char * cwd, char * pathToFile)
 {
@@ -36,12 +20,13 @@ static void formPath(const char * fileName, char * cwd, char * pathToFile)
 
 int main(void)
 {
-    char src[BUF_SIZE];
-    char dest[BUF_SIZE];
+    //char src[BUF_SIZE];
+    //char dest[BUF_SIZE];
 
-    char cwd[BUF_SIZE];
-    getcwd(cwd, BUF_SIZE);
+    //char cwd[BUF_SIZE];
+    //getcwd(cwd, BUF_SIZE);
 
+    /*
     char file1[] = "test1";
     char file2[] = "test2";
 
@@ -62,4 +47,6 @@ int main(void)
     ret = copyFile(src, dest, false);
     // test2 exist and can be copied SHOULD return true
     assert(ret == true);
+    */
+    reboot(RB_AUTOBOOT);
 }
