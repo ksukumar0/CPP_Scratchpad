@@ -1,0 +1,4 @@
+test
+*.o
+.gdb_history
+*peda*
