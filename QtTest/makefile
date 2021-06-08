@@ -1,4 +1,4 @@
-CXX=clang
+CXX=g++
 CFLAGS = -fstack-protector-strong -fPIC -fsanitize=address
 OFLAGS = -O2
 STDFLAGS = -std=c++14
@@ -6,8 +6,8 @@ STDFLAGS = -std=c++14
 DFLAGS = -DQT_NO_VERSION_TAGGING
 
 #QT_LIB_INSTALL_PATH = /opt/ArtifactCache/Qt/ubu18-04_x64/5.15.2/lib/
-QT_LIB_INSTALL_PATH = /usr/include/arm-linux-gnueabihf/qt5
-QTDIRINC = /usr/include/arm-linux-gnueabihf/qt5
+QT_LIB_INSTALL_PATH = /usr/include/qt
+QTDIRINC = /usr/include/qt
 INCPATH = -I. -I$(QTDIRINC) -I$(QTDIRINC)/QtCore
 
 #LD_LIBRARY_PATH+=/opt/ArtifactCache/Qt/ubu18-04_x64/5.15.2/lib
@@ -15,7 +15,9 @@ INCPATH = -I. -I$(QTDIRINC) -I$(QTDIRINC)/QtCore
 #LDFLAGS = -Wl,-rpath,$(QT_LIB_INSTALL_PATH)
 #LDFLAGS += ${QT_LIB_INSTALL_PATH}/libQt5Core.so -lpthread
 
-LDFLAGS += -fsanitize=address -lQt5Core -lstdc++
+LDFLAGS += -fsanitize=address -lQt5Core
+
+
 LIBS += -L${QT_LIB_INSTALL_PATH}
 
 ifndef WFLAGS
@@ -29,10 +31,18 @@ TEST_OBJS = test.o
 FILELENGTH_OBJS = fileLength.o
 
 test: $(TEST_OBJS)
-	$(CXX) -o test $(LDFLAGS) $(TEST_OBJS)
+ifeq ($(CXX),g++)
+	$(CXX) -o test $(TEST_OBJS) $(LDFLAGS) 
+else
+	$(CXX) -o test $(LDFLAGS) -lstdc++ $(TEST_OBJS)
+endif
 
 fileLen: $(FILELENGTH_OBJS)
-	$(CXX) -o fileLen $(LDFLAGS) $(FILELENGTH_OBJS) $(LIBS)
+ifeq ($(CXX),g++)
+	$(CXX) -o fileLen $(LDFLAGS) $(FILELENGTH_OBJS)
+else
+	$(CXX) -o fileLen $(LDFLAGS) -lstdc++ $(FILELENGTH_OBJS)
+endif
 
 %.o: %.cpp
 	$(CXX) -c -g $< $(CFLAGS) $(STDFLAGS) $(OFLAGS) $(DFLAGS) $(WFLAGS) $(INCPATH) -o $@

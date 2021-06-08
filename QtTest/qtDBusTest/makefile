@@ -1,0 +1,37 @@
+CC=g++
+CXX=g++
+CFLAGS= -fstack-protector -fPIC
+OFLAGS = -O2
+STDFLAGS = -std=c++14
+DFLAGS = -DQT_NO_VERSION_TAGGING
+
+LIBS = $(shell pkg-config --cflags dbus-1)
+LD_FLAGS = -L/usr/lib/arm-linux-gnueabihf -ldbus-1
+#VERBOSE=-v
+
+QTDIRINC = /usr/include/arm-linux-gnueabihf/qt5
+INCPATH = -I. -I$(QTDIRINC) -I$(QTDIRINC)/QtCore -I$(QTDIRINC)/QtDBus $(LIBS)
+
+LD_FLAGS += -lQt5Core -lQt5DBus
+
+ifdef WFLAGS
+	${WFLAGS}
+	WFLAGS= -Werror -Wall
+endif
+
+SRC = $(wildcard *.c)
+OBJS=$(subst .c,.o,$(SRC))
+
+QT_DBUS_TEST = qtDBusTest.o
+
+qtDBusTest: $(QT_DBUS_TEST)
+	@$(CXX) -o qtDBusTest $(VERBOSE) $(QT_DBUS_TEST) $(LD_FLAGS)
+	@echo "Linking $<"
+
+%.o: %.cpp
+	@$(CXX) -c $(CFLAGS) $(STDFLAGS) $(OFLAGS) $(DFLAGS) $(WFLAGS) $(INCPATH) $< -o $@
+	@echo "CC $<"
+
+clean:
+	rm -rf *.o
+	rm qtDBusTest
