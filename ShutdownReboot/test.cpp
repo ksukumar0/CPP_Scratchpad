@@ -6,6 +6,7 @@
 #include <QProcess>
 #include <iostream>
 #include <sys/reboot.h>
+#include <errno.h>
 
 #define BUF_SIZE 1000
 
@@ -48,5 +49,13 @@ int main(void)
     // test2 exist and can be copied SHOULD return true
     assert(ret == true);
     */
-    reboot(RB_AUTOBOOT);
+    int retval = reboot(RB_AUTOBOOT);
+    int temperrno = errno;
+    printf("Reboot returned %d\n",retval);
+    printf("Errno is %d\n",temperrno);
+
+    system("shutdown -r 0");
+    temperrno = errno;
+    printf("Trying the shutdown cmd\n");
+    printf("Errno is %d\n",temperrno);
 }
