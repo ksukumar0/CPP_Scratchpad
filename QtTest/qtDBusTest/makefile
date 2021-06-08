@@ -29,7 +29,7 @@ qtDBusTest: $(QT_DBUS_TEST)
 	@$(CXX) -o qtDBusTest $(VERBOSE) $(QT_DBUS_TEST) $(LD_FLAGS)
 	@echo "Linking $<"
 
-%.o: %.c
+%.o: %.cpp
 	@$(CXX) -c $(CFLAGS) $(STDFLAGS) $(OFLAGS) $(DFLAGS) $(WFLAGS) $(INCPATH) $< -o $@
 	@echo "CC $<"
 
