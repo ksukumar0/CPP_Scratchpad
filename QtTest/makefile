@@ -1,4 +1,4 @@
-CXX=clang
+CXX=g++
 CFLAGS = -fstack-protector-strong -fPIC -fsanitize=address
 OFLAGS = -O2
 STDFLAGS = -std=c++14
@@ -32,7 +32,7 @@ FILELENGTH_OBJS = fileLength.o
 
 test: $(TEST_OBJS)
 ifeq ($(CXX),g++)
-	$(CXX) -o test $(LDFLAGS) $(TEST_OBJS)
+	$(CXX) -o test $(TEST_OBJS) $(LDFLAGS) 
 else
 	$(CXX) -o test $(LDFLAGS) -lstdc++ $(TEST_OBJS)
 endif
