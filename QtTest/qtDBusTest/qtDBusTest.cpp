@@ -20,10 +20,12 @@ void method2()
 {
     qDebug() << "Method 2:";
 
-    QDBusConnection bus = QDBusConnection::sessionBus();
-    QDBusInterface dbus_iface("org.freedesktop.DBus", "/org/freedesktop/DBus",
-                              "org.freedesktop.DBus", bus);
-    qDebug() << dbus_iface.call("ListNames").arguments().at(0);
+    //QDBusConnection bus = QDBusConnection::sessionBus();
+    //QDBusInterface dbus_iface("org.freedesktop.DBus", "/org/freedesktop/DBus",
+    //qDebug() << dbus_iface.call("ListNames").arguments().at(0);
+    QDBusConnection bus = QDBusConnection::systemBus();
+    QDBusInterface dbus_iface("org.freedesktop.login1", "/org/freedesktop/login1","org.freedesktop.login1.Manager", bus);
+    qDebug() << dbus_iface.call("CanReboot").arguments().at(0);
 }
 
 void method3()
