@@ -14,6 +14,7 @@ struct B {
 struct D : B
 {
     D() { std::cout << "D::D\n";  }
+    D(int a) { std::cout <<"D::D="<<a<<"\n";}
     ~D() { std::cout << "D::~D\n";  }
     void bar() override { std::cout << "D::bar\n";  }
 };
@@ -114,8 +115,16 @@ void test2(void)
 
     return;
 }
+
+std::unique_ptr<D> test3(void)
+{
+    return std::unique_ptr<D>(new D(2));
+}
+
 int main()
 {
     //test1();
     test2();
+    auto s = test3();
+    (void) s;
 }
