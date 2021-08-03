@@ -47,6 +47,21 @@ void vectorTest()
     std::cout<<v.size() << " " <<v.capacity() << "\n";
     return;
 }
+
+auto testLambda()
+{
+    //auto hwSettings = ;
+    return []() -> int
+    {
+        int val;
+        std::cout<<std::endl<<"In Lambda!"<<std::endl;
+        val = 6;
+        return val;
+    };
+    //(void) hwSettings;
+    //hwSettings();
+}
+
 int main()
 {
     int *getlocal = fun();
@@ -61,8 +76,11 @@ int main()
     foreach(words);
     vectorTest();
 
+    auto test = testLambda();
+    test();
+
     char t[5];
-    t[5]=']';
+    t[4]=']';
     (void) t;
     return 0;
 }
