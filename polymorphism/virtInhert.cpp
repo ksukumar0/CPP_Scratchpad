@@ -42,6 +42,8 @@ class FswMdBgaIoIsr : public MdBgaIoIsr
     public:
         FswMdBgaIoIsr();
         ~FswMdBgaIoIsr();
+
+        FswMdBgaIoIsr * getThis();
         void IsrThread(void) override;
 };
 
@@ -51,6 +53,11 @@ FswMdBgaIoIsr::FswMdBgaIoIsr()
 
 FswMdBgaIoIsr::~FswMdBgaIoIsr()
 {
+}
+
+FswMdBgaIoIsr * FswMdBgaIoIsr::getThis()
+{
+    return this;
 }
 
 void FswMdBgaIoIsr::IsrThread(void)
@@ -84,7 +91,9 @@ void testVirtKeyword(void)
 void testThisPointer()
 {
     FswMdBgaIoIsr t;
-    t.IsrThread();
+    t.getMyStatic()->IsrThread();
+    cout<<"FswMdBgaIoIsr this ptr "<<t.getThis()<<endl;
+    cout<<"myStatic this ptr "<<t.getMyStatic()<<endl;
 }
 
 //main function

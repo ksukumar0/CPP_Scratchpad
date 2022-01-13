@@ -17,3 +17,9 @@ void MdBgaIoIsr::IsrThread(void)
 {
     cout<<"In MdBgaIoIsr"<<endl;
 }
+
+MdBgaIoIsr * MdBgaIoIsr::getMyStatic(void)
+{
+    return myStaticthis;
+}
+
