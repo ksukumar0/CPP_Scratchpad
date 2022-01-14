@@ -160,7 +160,7 @@ void test4(void)
 
 int main()
 {
-    //test1();
+    test1();
     //test2();
     //auto s = test3();
     //(void) s;

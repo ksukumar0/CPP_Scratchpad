@@ -33,4 +33,6 @@ int main()
     std::cout<< bintofloat(reconstruct)<<std::endl;
     std::cout<< *((float *)&reconstruct)<<std::endl;
     std::cout<< *((float *)&reconstruct)+*((float *)&reconstruct)<<std::endl;
+
+    std::printf("0x%08X\n",__builtin_bswap32(reconstruct));
 }
