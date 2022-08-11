@@ -17,7 +17,7 @@ LD_LIBRARY_PATH += /home/sukumar/Projects/ESMAIN/sukumar_ES-MAIN_21.4.12.0_view/
 LDFLAGS += -fsanitize=address
 #LDFLAGS += -v
 LIBS += -L${QT_LIB_INSTALL_PATH}
-LIBS += -lQt5Core
+LIBS += -lQt5Core -ldl
 
 ifndef WFLAGS
 #WFLAGS= -Werror -Wall
