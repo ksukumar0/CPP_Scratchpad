@@ -35,23 +35,28 @@ QLIBTEST_OBJS = QlibTest.o
 
 test: $(TEST_OBJS)
 ifeq ($(CXX),g++)
-	$(CXX) -o test $(TEST_OBJS) $(LDFLAGS)
+	@$(CXX) -o test $(TEST_OBJS) $(LDFLAGS)
+	@echo "LD $<"
 else
-	$(CXX) -o test $(LDFLAGS) -lstdc++ $(TEST_OBJS)
+	@$(CXX) -o test $(LDFLAGS) -lstdc++ $(TEST_OBJS)
+	@echo "LD $<"
 endif
 
 fileLen: $(FILELENGTH_OBJS)
 ifeq ($(CXX),g++)
-	$(CXX) -o fileLen $(LDFLAGS) $(FILELENGTH_OBJS)
+	@$(CXX) -o fileLen $(LDFLAGS) $(FILELENGTH_OBJS)
+	@echo "LD $<"
 else
-	$(CXX) -o fileLen $(LDFLAGS) -lstdc++ $(FILELENGTH_OBJS)
+	@$(CXX) -o fileLen $(LDFLAGS) -lstdc++ $(FILELENGTH_OBJS)
+	@echo "LD $<"
 endif
 
 QlibTest: $(QLIBTEST_OBJS)
-	$(CXX) -o QlibTest $(LDFLAGS) $(QLIBTEST_OBJS) $(LIBS)
+	@$(CXX) -o QlibTest $(LDFLAGS) $(QLIBTEST_OBJS) $(LIBS)
+	@echo "LD $<"
 
 %.o: %.cpp
-	$(CXX) -c -g $< $(CFLAGS) $(STDFLAGS) $(OFLAGS) $(DFLAGS) $(WFLAGS) $(INCPATH) -o $@
+	@$(CXX) -c -g $< $(CFLAGS) $(STDFLAGS) $(OFLAGS) $(DFLAGS) $(WFLAGS) $(INCPATH) -o $@
 	@echo "CC $<"
 
 clean:
