@@ -3,11 +3,15 @@ FLAGS = -Wall -Werror
 OFLAGS = -O2
 STDFLAGS = -std=c++14
 
-SRC = virtualDest.cpp
-OBJ = virtualDest.o
+SRC = vectorDest.cpp
+OBJ = vectorDest.o
 
-virtualDest: $(OBJ)
-	gcc -o virtualDest $(OBJ) -lstdc++ 
+vectorDest: $(OBJ)
+	gcc -o vectorDest $(OBJ) -lstdc++ 
 
 %.o: %.cpp
 	$(CC) -c $(OFLAGS) $(FLAGS) $(STDFLAGS) $< -o $@ -fPIC
+
+clean:
+	rm -rf *.o
+	rm -rf vectorDest
