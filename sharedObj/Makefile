@@ -8,6 +8,9 @@ OBJS = main.o
 
 EXENAME=sharedObj
 
+
+.PHONY: all
+
 all: libtriangle.so $(EXENAME)
 
 $(EXENAME): $(OBJS)
@@ -18,6 +21,8 @@ $(EXENAME): $(OBJS)
 
 libtriangle.so: triangle.o
 	$(CC) -shared $< -o $@
+
+.PHONY: clean
 
 clean:
 	rm -rf *.o
