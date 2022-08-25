@@ -1,6 +1,10 @@
 #include "polygon.hpp"
 #include <iostream>
 #include <dlfcn.h>
+
+// Website for dynamic Libs in CPP
+//https://tldp.org/HOWTO/C++-dlopen/index.html
+
 int main() {
     using std::cout;
     using std::cerr;
