@@ -11,7 +11,7 @@ TEST_OBJS = test.o
 SORT_OBJS = sort.o
 
 scratch: $(SCRATCH_OBJS)
-	$(CC) $(FLAGS) $(OFLAGS) $(STDFLAGS) -o scratch $(SCRATCH_OBJS)
+	$(CC) $(FLAGS) $(OFLAGS) $(STDFLAGS) -o scratch $(SCRATCH_OBJS) -lasan
 
 test: $(TEST_OBJS)
 	$(CC) -fsanitize=address -o test $(TEST_OBJS)
