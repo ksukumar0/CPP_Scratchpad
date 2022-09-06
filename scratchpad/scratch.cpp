@@ -1,6 +1,6 @@
 #include<iostream>
-
 #include<iomanip>
+#include<fstream>
 #include<string>
 #include "random.h"
 
@@ -8,6 +8,8 @@ int k=10;
 int nmi;
 static int plis;
 static int blush=10;
+std::ofstream dev_null("/dev/null");
+std::ostream &PRINT_DBG = dev_null;
 
 [[maybe_unused]]int fun(const int &x)
 {
@@ -69,9 +71,16 @@ static void stringPrintHex(void)
    s <<"ven" << std::hex<<ven;
    std::string sVen(s.str());
    std::cout<<sVen<<std::endl;
-   s<<"&dev_"<<0x144f;
+   s<<"&dev_"<<0x144f<<std::endl;
+   s<<"&dev_"<<std::setfill('0')<<std::setw(5)<<std::hex<<10;
    std::cout<<s.str()<<std::endl;
+   std::cout<<"Size of unsigned long: "<<sizeof(unsigned long)<<std::endl;
 
+   uint64_t physaddr = 0x2db800000;
+   uint64_t mask = ( ((((uint64_t)1)<<32) - 1) << 32);
+   printf("0x%16lx\n",physaddr);
+   printf("0x%16lx\n",mask);
+   printf("0x%16lx\n",mask&physaddr);
 }
 
 int main()
