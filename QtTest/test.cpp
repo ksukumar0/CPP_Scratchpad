@@ -4,6 +4,7 @@
 #include <cassert>
 #include <cstdbool>
 #include <QFile>
+#include <iostream>
 
 #define BUF_SIZE 1000
 
@@ -56,7 +57,8 @@ int main(void)
     // test2 exist and can be copied SHOULD return true
     assert(ret == true);
 
-    QFile::remove(dest);
+    bool retBool = QFile::remove(dest);
+    std::cout<<"Return value of remove is "<<retBool;
     ret = copyFile(src, dest, false);
     // test2 exist and can be copied SHOULD return true
     assert(ret == true);

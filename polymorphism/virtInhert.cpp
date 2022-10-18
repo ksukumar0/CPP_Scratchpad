@@ -1,6 +1,7 @@
 // C++ program for function overriding
 
 #include <bits/stdc++.h>
+#include "MdBgaIoIsr.h"
 using namespace std;
 
 class base
@@ -36,6 +37,34 @@ class derived2:public derived
         { cout<< "show derived2 class" <<endl; }
 };
 
+class FswMdBgaIoIsr : public MdBgaIoIsr
+{
+    public:
+        FswMdBgaIoIsr();
+        ~FswMdBgaIoIsr();
+
+        FswMdBgaIoIsr * getThis();
+        void IsrThread(void) override;
+};
+
+FswMdBgaIoIsr::FswMdBgaIoIsr()
+{
+}
+
+FswMdBgaIoIsr::~FswMdBgaIoIsr()
+{
+}
+
+FswMdBgaIoIsr * FswMdBgaIoIsr::getThis()
+{
+    return this;
+}
+
+void FswMdBgaIoIsr::IsrThread(void)
+{
+    cout<<"In FswMdBgaIoIsr"<<endl;
+}
+
 static void printClass(base *bptr)
 {
     //virtual function, bound at runtime (Runtime polymorphism)
@@ -45,18 +74,32 @@ static void printClass(base *bptr)
     bptr->show();
 
 }
-//main function
-int main()
+
+void testVirtKeyword(void)
 {
-    base *bptr;
     derived d;
     derived2 d2;
+    base *bptr;
     bptr = &d;
     derived *pt = dynamic_cast<derived *>(bptr);
     pt->show1();
     printClass(bptr);
     bptr = &d2;
     printClass(bptr);
+}
 
+void testThisPointer()
+{
+    FswMdBgaIoIsr t;
+    t.getMyStatic()->IsrThread();
+    cout<<"FswMdBgaIoIsr this ptr "<<t.getThis()<<endl;
+    cout<<"myStatic this ptr "<<t.getMyStatic()<<endl;
+}
+
+//main function
+int main()
+{
+    testVirtKeyword();
+    testThisPointer();
     return 0;
 }

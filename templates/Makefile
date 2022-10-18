@@ -1,7 +1,7 @@
 CC = clang
 FLAGS = -Wall -Werror
 OFLAGS = -O2
-STDFLAGS = -std=c++14
+STDFLAGS = -std=c++17
 
 SRC = template.cpp
 OBJ = template.o
@@ -11,3 +11,7 @@ template: $(OBJ) template.h
 
 %.o: %.cpp
 	$(CC) -c $(OFLAGS) $(FLAGS) $(STDFLAGS) $< -o $@ -fPIC
+
+clean:
+	rm -rf *.o
+	rm template
