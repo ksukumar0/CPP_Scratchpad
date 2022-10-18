@@ -13,3 +13,7 @@ extern "C" polygon* create() {
 extern "C" void destroy(polygon* p) {
     delete p;
 }
+
+extern "C" void destroy(polygon* p) {
+    delete p;
+}
