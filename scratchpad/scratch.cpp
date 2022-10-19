@@ -8,8 +8,13 @@ int k=10;
 int nmi;
 static int plis;
 static int blush=10;
+
+#if 1
+std::ostream &PRINT_DBG = std::cout;
+#else
 std::ofstream dev_null("/dev/null");
 std::ostream &PRINT_DBG = dev_null;
+#endif
 
 [[maybe_unused]]int fun(const int &x)
 {
@@ -81,6 +86,7 @@ static void stringPrintHex(void)
    printf("0x%16lx\n",physaddr);
    printf("0x%16lx\n",mask);
    printf("0x%16lx\n",mask&physaddr);
+   PRINT_DBG<<"SAD\n";
 }
 
 int main()
