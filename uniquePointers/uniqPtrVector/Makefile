@@ -10,7 +10,7 @@ uniqPtr: $(OBJS)
 	$(CC) -o uniqPtr $(OBJS) -lstdc++
 
 %.o: %.cpp
-	$(CC) -c $(OFLAGS) $(FLAGS) $(STDFLAGS) $< -o $@ -fPIC
+	$(CC) -c $(OFLAGS) $(FLAGS) $(STDFLAGS) $< -o $@
 
 clean:
 	rm -rf *.o

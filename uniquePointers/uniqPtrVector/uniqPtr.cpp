@@ -8,19 +8,19 @@
 #include "vectDevices.h"
 #include "rspciDrvAccess.h"
 
-void test1(void)
+void test(void)
 {
-   printf("Start of test1\n");
-   std::string t("test1");
+   printf("Start of test\n");
+   std::string t("test");
    std::unique_ptr<CRsPciDriverAccess> p = std::make_unique<CRsPciDriverAccess>(CRsPciDriverAccess(t));
    auto& v = CVecDevices::getInstance();
    v.push_back(std::move(p));
-   printf("End of test1\n");
+   printf("End of test\n");
 }
 
 int main()
 {
    printf("Start of Main\n");
-   test1();
+   test();
    printf("End of Main\n");
 }

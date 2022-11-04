@@ -12,6 +12,7 @@ class CRsPciDriverAccess
       std::vector<std::unique_ptr<int>> m_sg_tables;
       std::vector<std::unique_ptr<double>> m_sgInfo;
       std::string m_text;
+      int m_random;
 
    public:
       CRsPciDriverAccess(CRsPciDriverAccess&& );
