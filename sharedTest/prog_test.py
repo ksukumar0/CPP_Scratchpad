@@ -15,4 +15,5 @@ if __name__ == "__main__":
     set_side.argtypes = [POINTER(SMB_REQUEST), c_double]
 
     dll.printRandom()
+    del dll
     #set_side(byref(t),5.6)

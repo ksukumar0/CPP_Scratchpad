@@ -3,11 +3,15 @@
 #include <cmath>
 
 #if 0
-std::ostream &PRINT_DBG = std::cout;
-#else
-std::ofstream dev_null("/dev/null");
-std::ostream &PRINT_DBG = dev_null;
+   #if 1
+      std::ostream &PRINT_DBG = std::cout;
+   #else
+      std::ofstream dev_null("/dev/null");
+      std::ostream &PRINT_DBG = dev_null;
+   #endif
 #endif
+
+#define PRINT_DBG( ... )   fprintf(stdout, __VA_ARGS__ )
 
 class triangle {
 public:
@@ -45,7 +49,7 @@ extern "C" {
    }
 
    void printRandom(void) {
-      PRINT_DBG<<"Random\n";
+      PRINT_DBG("Random\n");
    }
 
    void setSide(triangle* p, double length) {
@@ -58,10 +62,10 @@ extern "C" {
 
 static void init12(void)
 {
-   PRINT_DBG<<"CONSTRUCTOR\n";
+   PRINT_DBG("CONSTRUCTOR\n");
 }
 
 static void fini12(void)
 {
-   PRINT_DBG<<"DESTRUCTOR\n";
+   PRINT_DBG("DESTRUCTOR\n");
 }
