@@ -15,6 +15,11 @@ struct D : B
 {
     D() { std::cout << "D::D\n";  }
     D(int a) { std::cout <<"D::D="<<a<<"\n";}
+    D& operator= (D &&)
+    {
+       std::cout<<"Assignment D::=\n";
+       return *this;
+    }
     ~D() { std::cout << "D::~D\n";  }
     void bar() override { std::cout << "D::bar\n";  }
 };

@@ -1,4 +1,4 @@
-CC = clang
+CC = g++
 FLAGS = -Wall -Werror
 OFLAGS = -O2
 STDFLAGS = -std=c++14
