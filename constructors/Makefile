@@ -11,6 +11,7 @@ OBJS=$(subst .cpp,.o,$(SRC))
 CONSOBJS=construct.o
 DESTOBJS=destructorOrder.o
 DESTINHERTOBJS=destOrderInhtce.o
+CONSORDEROBJS=constructOrder.o
 
 %.o: %.cpp
 	$(CC) -c $(FLAGS) $(STDFLAGS) $< -o $@
@@ -20,6 +21,9 @@ construct: $(OBJS)
 
 destruct: $(DESTOBJS)
 	$(CC) $(FLAGS) $(OFLAGS) $(STDFLAGS) -o destruct $(DESTOBJS)
+
+constructOrder: $(OBJS)
+	$(CC) $(FLAGS) $(OFLAGS) $(STDFLAGS) -o constructOrder $(CONSORDEROBJS)
 
 destructInher: $(DESTINHERTOBJS)
 	$(CC) $(FLAGS) $(OFLAGS) $(STDFLAGS) -o destinhert $(DESTINHERTOBJS)
