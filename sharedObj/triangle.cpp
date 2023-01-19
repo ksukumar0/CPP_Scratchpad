@@ -2,7 +2,7 @@
 #include <cmath>
 class triangle : public polygon {
 public:
-    virtual double area() const {
+   double area() const override {
         return side_length_ * side_length_ * sqrt(3) / 2;
     }
 };
