@@ -1,4 +1,4 @@
-CC = clang
+CC = gcc
 FLAGS = -Wall -Werror
 OFLAGS = -O2
 STDFLAGS = -std=c++17
