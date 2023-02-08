@@ -167,7 +167,7 @@ int main()
 {
     test1();
     //test2();
-    //auto s = test3();
-    //(void) s;
+    auto s = test3();
+    (void) s;
     test4();
 }
