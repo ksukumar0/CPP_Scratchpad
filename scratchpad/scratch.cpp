@@ -69,7 +69,7 @@ std::ostream &PRINT_DBG = dev_null;
    }
 }
 
-static void stringPrintHex(void)
+[[maybe_unused]] static void stringPrintHex(void)
 {
    std::stringstream s;
    uint32_t ven = 0x162f;
@@ -89,8 +89,44 @@ static void stringPrintHex(void)
    PRINT_DBG<<"SAD\n";
 }
 
+class CalcMode
+{
+public:
+   enum class burstWidth
+   {
+      WIDTH_640 = 640,
+      WIDTH_1280 = 1280
+   };
+   CalcMode(burstWidth mode):m_burstWidth(mode)
+   {
+
+   }
+
+private:
+   burstWidth m_burstWidth;
+
+};
+
+template <class T>
+uint32_t toInt(T t)
+{
+   return static_cast<uint32_t>(t);
+}
+
+void printEnum(void)
+{
+   CalcMode test(CalcMode::burstWidth::WIDTH_640);
+   auto t640 = static_cast<int>(CalcMode::burstWidth::WIDTH_640);
+   auto t1280 = static_cast<int>(CalcMode::burstWidth::WIDTH_1280);
+   std::cout<<"640 Width = "<<t640<<"\n";
+   std::cout<<"1280 Width = "<<t1280<<"\n";
+   std::cout<<"640 Width = "<<static_cast<int>(CalcMode::burstWidth::WIDTH_640)<<"\n";
+   std::cout<<toInt((CalcMode::burstWidth::WIDTH_1280))<<"\n";
+}
+
 int main()
 {
-   stringPrintHex();
+   //stringPrintHex();
+   printEnum();
    return 0;
 }
