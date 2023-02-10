@@ -3,3 +3,4 @@ constructOrder
 destruct
 destOrderInhtce
 *.o
+destinhert

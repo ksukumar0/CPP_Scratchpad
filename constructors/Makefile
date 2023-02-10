@@ -1,5 +1,5 @@
 CC = g++
-FLAGS = -Wall
+FLAGS = -Wall -Wreorder
 OFLAGS = -O2
 STDFLAGS = -std=c++11
 
