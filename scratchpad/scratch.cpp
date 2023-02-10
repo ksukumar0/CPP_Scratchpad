@@ -102,13 +102,13 @@ public:
 
    }
 
-private:
+
    burstWidth m_burstWidth;
 
 };
-
-template <class T>
-uint32_t toInt(T t)
+#include<typeinfo>
+template <typename T>
+static uint32_t constexpr toInt(T t)
 {
    return static_cast<uint32_t>(t);
 }
@@ -122,6 +122,8 @@ void printEnum(void)
    std::cout<<"1280 Width = "<<t1280<<"\n";
    std::cout<<"640 Width = "<<static_cast<int>(CalcMode::burstWidth::WIDTH_640)<<"\n";
    std::cout<<toInt((CalcMode::burstWidth::WIDTH_1280))<<"\n";
+   //std::cout<<decltype(CalcMode::burstWidth::WIDTH_640)<<"\n";
+   std::cout<<typeid(test.m_burstWidth)<<"\n";
 }
 
 int main()
