@@ -11,9 +11,9 @@ class A
 class B : public A
 {
    public:
-      //A a, aa, aaa;
-      //B() : A("A "),a("a"),aa("aa"){ std::cout << "B constructor" << std::endl; }
-      B(): A("Testing one"){std::cout << "B constructor" << std::endl;}
+      A a, aa, aaa;
+      B() : A("A "),a("a"),aa("aa"){ std::cout << "B constructor" << std::endl; }
+      //B(): A("Testing one"){std::cout << "B constructor" << std::endl;}
       ~B() { std::cout << "B destructor" << std::endl; }
 };
 B beta;

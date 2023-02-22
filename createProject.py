@@ -29,8 +29,6 @@ def open_templates_create_files(args):
     template_makefile = env.get_template('Makefile.jinja2')
     template_gitignore = env.get_template('.gitignore.jinja2')
 
-    print(template_gitignore.render(projectname=args.filename))
-
     if not os.path.exists(os.getcwd()+seperator+args.filename):
         os.mkdir(args.filename)
 
