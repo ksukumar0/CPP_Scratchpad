@@ -58,6 +58,7 @@ class Increase
       T mVal;
 };
 
+
 int main()
 {
    int x = 1;
@@ -88,4 +89,5 @@ int main()
    std::cout << f5(x) << std::endl;
    std::function<int(int,int)> f6 = std::bind(static_cast<int(Increase<int>::*)(int,int) const>(&Increase<int>::increase), increaseTen, std::placeholders::_1, std::placeholders::_2);
    std::cout << f6(x,y) << std::endl;
+
 }
