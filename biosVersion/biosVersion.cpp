@@ -2,7 +2,8 @@
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <stdio.h>
+#include <algorithm>
+#include <cstdio>
 #include "biosVersion.h"
 
 void mangleText(std::string text)
@@ -35,6 +36,25 @@ void openinCPP(std::string& path)
    }
 }
 
+void removeTrailingSpace(std::string& path)
+{
+   std::ifstream readFile(path);
+   if(!readFile.fail())
+   {
+      std::stringstream buffer;
+      buffer << readFile.rdbuf();
+      std::ofstream newFile("bios_version_new", std::ios::out|std::ios::trunc);
+      std::string strippedBuf(buffer.str());
+      strippedBuf.erase( std::remove(strippedBuf.begin(), strippedBuf.end(), '\n'), strippedBuf.end() );
+      strippedBuf.erase( std::remove(strippedBuf.begin(), strippedBuf.end(), '\r'), strippedBuf.end() );
+      newFile<<strippedBuf;
+   }
+   else
+   {
+      printf("File not found\n");
+   }
+}
+
 int main()
 {
    std::string path = "/sys/class/dmi/id/bios_version";
@@ -45,6 +65,7 @@ int main()
    {
       [[maybe_unused]] int retval = fscanf(fp, "%s", biosVersion);
       printf("%s\n",biosVersion);
+      removeTrailingSpace(path);
    }
    else
    {
