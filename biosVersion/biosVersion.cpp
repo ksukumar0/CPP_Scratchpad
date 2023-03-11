@@ -18,6 +18,9 @@ void mangleText(std::string text)
    std::string full = "R&S Analyzer BIOS " + start + " " + end;
    std::cout<<"full: "<<full<<std::endl;
 
+   std::ofstream newFile("bios_version_new_new", std::ios::out|std::ios::trunc);
+   newFile<<full;
+   newFile.close();
 }
 
 void openinCPP(std::string& path)
