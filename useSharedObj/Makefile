@@ -17,7 +17,7 @@ $(EXENAME): $(OBJS)
 	$(CC) -o $(EXENAME) $(OBJS) -Wl,-rpath=$(PWD) -L$(PWD) -ltriangle
 
 %.o: %.cpp
-	$(CC) -c $(OFLAGS) $(FLAGS) $(STDFLAGS) $< -o $@ -fPIC
+	@$(CC) -c $(OFLAGS) $(FLAGS) $(STDFLAGS) $< -o $@ -fPIC
 
 libtriangle.so: triangle.o
 	$(CC) -shared $< -o $@ -fPIC
