@@ -1,4 +1,4 @@
-tXHW::CONTROL::OUT3_ONifndef TRIANGLE_HPP
+#ifndef TRIANGLE_HPP
 #define TRIANGLE_HPP
 
 #include "polygon.hpp"
