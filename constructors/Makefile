@@ -13,6 +13,8 @@ DESTOBJS=destructorOrder.o
 DESTINHERTOBJS=destOrderInhtce.o
 CONSORDEROBJS=constructOrder.o
 
+all: construct destruct constructOrder
+
 %.o: %.cpp
 	$(CC) -c $(FLAGS) $(STDFLAGS) $< -o $@
 

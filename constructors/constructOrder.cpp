@@ -23,10 +23,12 @@ struct D : C, virtual V {
 
 struct E : V {
   E() { cout << "E()" << endl; }
+  E(int test) { cout << "E(int) :"<<test<< endl; }
 };
 
 int main() {
   D c;
   std::cout<<"PART II\n";
   E e;
+  E e1(1);
 }
