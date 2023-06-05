@@ -24,6 +24,7 @@ struct D : C, virtual V {
 struct E : V {
   E() { cout << "E()" << endl; }
   E(int test) { cout << "E(int) :"<<test<< endl; }
+  E(int test, char letter) { cout << "E(int,char) :"<<test << ", "<<letter<< endl; }
 };
 
 int main() {
@@ -31,4 +32,5 @@ int main() {
   std::cout<<"PART II\n";
   E e;
   E e1(1);
+  E ea(1, 'a');
 }

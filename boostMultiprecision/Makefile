@@ -15,8 +15,8 @@ OBJS=$(subst .cpp,.o,$(SRC))
 %.o: %.cpp
 	$(CC) -c $(CFLAGS) $(STDFLAGS) $(WFLAGS) $(OFLAGS) $< -o $@
 
-{{projectname}}: $(OBJS)
-	$(CC) $(FLAGS) $(OFLAGS) $(LDFLAGS) $(STDFLAGS) -o {{projectname}} $(OBJS)
+boostMultiprecision: $(OBJS)
+	$(CC) $(FLAGS) $(OFLAGS) $(LDFLAGS) $(STDFLAGS) -o boostMultiprecision $(OBJS)
 
 clean:
-	rm -rf *.o {{projectname}}
+	rm -rf *.o boostMultiprecision
