@@ -15,8 +15,8 @@ OBJS=$(subst .cpp,.o,$(SRC))
 %.o: %.cpp
 	$(CC) -c $(CFLAGS) $(STDFLAGS) $(WFLAGS) $(OFLAGS) $(INCPATH) $< -o $@
 
-{{projectname}}: $(OBJS)
-	$(CC) $(FLAGS) $(OFLAGS) $(LDFLAGS) $(STDFLAGS) -o {{projectname}} $(OBJS)
+std_optional: $(OBJS)
+	$(CC) $(FLAGS) $(OFLAGS) $(LDFLAGS) $(STDFLAGS) -o std_optional $(OBJS)
 
 clean:
-	rm -rf *.o {{projectname}}
+	rm -rf *.o std_optional
